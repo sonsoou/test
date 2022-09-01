@@ -33,9 +33,8 @@ $(()=>{////////// jQB /////////////////////
    let gep = $(window).height()/2 + 206;
    //윈도우(보이는화면) 높이값의 절반
    //206은 상단영역이 슬림해질때 크기 차이임!
-
    //위치 배열값 확인
-   scPos.forEach((val)=>console.log(val)); 
+//    scPos.forEach((val)=>console.log(val)); 
 
    // 상단영역 변수
    let topA = $('#top');
@@ -50,7 +49,7 @@ $(()=>{////////// jQB /////////////////////
       scTop = $(this).scrollTop();
 
 
-      console.log('스크롤중~~!',scTop);
+    //   console.log('스크롤중~~!',scTop);
 
       // 1. 스크롤시 상단영역에 클래스 on넣기
       // 슬림 디자인 상단영역 변경하기!
