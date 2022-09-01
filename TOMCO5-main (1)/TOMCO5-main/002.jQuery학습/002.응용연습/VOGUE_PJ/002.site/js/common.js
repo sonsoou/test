@@ -29,6 +29,11 @@ $(()=>{////////// jQB /////////////////////
 
    });/////////// each ////////
 
+   // 스크롤 등장위치 보정값 변수
+   let gep = $(window).height()/2 + 206;
+   //윈도우(보이는화면) 높이값의 절반
+   //206은 상단영역이 슬림해질때 크기 차이임!
+
    //위치 배열값 확인
    scPos.forEach((val)=>console.log(val)); 
 
@@ -59,12 +64,26 @@ $(()=>{////////// jQB /////////////////////
       if(scTop >= 300) tbtn.addClass('on');
       else tbtn.removeClass('on');
 
-      // 스크롤등장 요소에 클래스 on넣기
-      if(scTop > 400){
-        scAct.first().addClass('on');
-      }
+      // 3.스크롤등장 요소에 클래스 on넣기
+      // 등장액션 요소 개수만큼 scAction함수 호출하기!
+      scAct.each(idx =>scAction(idx));
 
     }); //////////// scroll ////////////////
+
+    /******************************** 
+        스크롤 액션 함수
+        함수명 : scAction
+         기능: 각 스크롤위치를 체크하여 해당요소에 
+        클래스 on을 넣어준다!
+    ******************************** */
+   function scAction(seq){ // seq 순번 전달값
+
+    if(scTop > scPos[seq] - gep && 
+        scTop < scPos[seq]){
+        scAct.eq(seq).addClass('on');
+      } ////////// if ///////////
+      
+   } /////////////// scAction함수 ////////////
 
     //위로가기 버튼 클릭시 맨위로 애니메이션 이동하기
     //위로가기 버튼은 a요소이므로 기본이동 막기필요!
